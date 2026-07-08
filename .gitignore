@@ -25,6 +25,8 @@ dist-ssr
 
 doc
 
+public/projects.json
+
 .env
 .env.local
 .env.*.local
