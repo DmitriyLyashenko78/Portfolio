@@ -1,0 +1,192 @@
+/* src/widgets/Skills/Skills.module.css */
+
+.section {
+    padding: var(--spacing-7xl, 80px) 0;
+    background: var(--color-bg, #0a0e1a);
+    border-top: 1px solid var(--color-border, #1e293b);
+}
+
+/* ============================================
+   ЗАГОЛОВОК (без подзаголовка и полоски)
+   ============================================ */
+
+.header {
+    margin-bottom: var(--spacing-6xl, 64px);
+}
+
+.title {
+    font-size: var(--font-size-4xl, 40px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    margin: 0;
+}
+
+.titleHighlight {
+    color: var(--color-accent, #3b82f6);
+}
+
+/* ============================================
+   КАТЕГОРИИ
+   ============================================ */
+
+.category {
+    margin-bottom: var(--spacing-5xl, 48px);
+}
+
+.category:last-child {
+    margin-bottom: 0;
+}
+
+.categoryTitle {
+    font-size: var(--font-size-xl, 20px);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-text-secondary, #94a3b8);
+    margin: 0 0 var(--spacing-lg, 16px) 0;
+}
+
+/* ============================================
+   СЕТКА НАВЫКОВ — 4 КОЛОНКИ
+   ============================================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg, 16px);
+}
+
+/* ============================================
+   КАРТОЧКА НАВЫКА
+   ============================================ */
+
+.skillCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md, 12px) var(--spacing-md, 12px);
+    background: var(--color-bg-secondary, #111827);
+    border-radius: var(--radius-lg, 12px);
+    border: 1px solid var(--color-border, #1e293b);
+    transition: all 0.3s ease;
+    cursor: default;
+    min-height: 120px;
+}
+
+.skillCard:hover {
+    border-color: var(--color-accent, #3b82f6);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+}
+
+.skillIcon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.skillCard:hover .skillIcon {
+    transform: scale(1.1);
+}
+
+/* Название навыка — шрифт больше и отступ сверху 5px */
+.skillName {
+    font-size: var(--font-size-lg, 18px); /* Было 14px, стало 16px */
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-secondary, #94a3b8);
+    text-align: center;
+    transition: color 0.3s ease;
+    margin-top: 25px; /* ← дополнительный отступ 5px */
+}
+
+.skillCard:hover .skillName {
+    color: var(--color-text, #f0f4ff);
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+/* Планшеты — 3 колонки */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md, 12px);
+    }
+
+    .skillCard {
+        min-height: 100px;
+        padding: var(--spacing-lg, 16px) var(--spacing-md, 12px);
+    }
+
+    .skillIcon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skillName {
+        font-size: var(--font-size-sm, 14px);
+    }
+}
+
+/* Мобилки — 2 колонки */
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-6xl, 64px) 0;
+    }
+
+    .header {
+        margin-bottom: var(--spacing-4xl, 40px);
+    }
+
+    .title {
+        font-size: var(--font-size-3xl, 32px);
+    }
+
+    .categoryTitle {
+        font-size: var(--font-size-lg, 18px);
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm, 8px);
+    }
+
+    .skillCard {
+        min-height: 80px;
+        padding: var(--spacing-md, 12px) var(--spacing-sm, 8px);
+    }
+
+    .skillIcon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .skillName {
+        font-size: var(--font-size-sm, 14px);
+        margin-top: 4px;
+    }
+}
+
+/* Маленькие мобилки — 2 колонки */
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs, 6px);
+    }
+
+    .skillCard {
+        min-height: 70px;
+        padding: var(--spacing-sm, 8px);
+    }
+
+    .skillIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .skillName {
+        font-size: var(--font-size-xs, 12px);
+        margin-top: 3px;
+    }
+}

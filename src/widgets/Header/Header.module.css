@@ -1,0 +1,279 @@
+/* src/widgets/Header/Header.module.css */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 16px 0;
+    transition: all 0.3s ease;
+    background: var(--color-bg, #0a0e1a);
+    border-bottom: 1px solid transparent;
+}
+
+/* Состояние при скролле — с блюром и непрозрачностью */
+.header.scrolled {
+    background: rgba(10, 14, 26, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--color-border, #1e293b);
+    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg, 16px);
+}
+
+/* ============================================
+   ЛОГОТИП
+   ============================================ */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logoName {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    transition: color 0.2s ease;
+}
+
+.logoLetters {
+    margin-top: 6px;
+    font-size: var(--font-size-2xl, 20px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    transition: color 0.2s ease;
+}
+
+.logo:hover .logoName  {
+    color: var(--color-accent, #3b82f6);
+}
+
+.logo:hover .logoLetters  {
+    color: var(--color-accent, #3b82f6);
+}
+
+.logoBadge {
+    font-size: var(--font-size-xs, 12px);
+    color: var(--color-text-secondary, #94a3b8);
+    background: var(--color-bg-tertiary, #1a2332);
+    padding: 2px 10px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--color-border, #1e293b);
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .logoBadge {
+        display: inline-block;
+    }
+}
+
+/* ============================================
+   НАВИГАЦИЯ (ДЕСКТОП)
+   ============================================ */
+
+.nav {
+    display: none;
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3xl, 32px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navLink {
+    font-size: var(--font-size-md, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-secondary, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 4px 0;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent, #3b82f6);
+    transition: width 0.3s ease;
+}
+
+.navLink:hover {
+    color: var(--color-text, #f0f4ff);
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+/* Активная ссылка (можно добавить позже) */
+.navLink.active {
+    color: var(--color-text, #f0f4ff);
+}
+
+.navLink.active::after {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .nav {
+        display: block;
+    }
+}
+
+/* ============================================
+   ДЕЙСТВИЯ (КНОПКИ)
+   ============================================ */
+
+.actions {
+    display: none;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .actions {
+        display: block;
+    }
+}
+
+/* ============================================
+   БУРГЕР-МЕНЮ (МОБИЛКА)
+   ============================================ */
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.burgerLine {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text, #f0f4ff);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Анимация бургера при открытии */
+.burgerLineOpen1 {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.burgerLineOpen2 {
+    opacity: 0;
+}
+
+.burgerLineOpen3 {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+}
+
+/* ============================================
+   МОБИЛЬНОЕ МЕНЮ (OVERLAY)
+   ============================================ */
+
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: var(--color-bg, #0a0e1a);
+    padding: 80px 20px 40px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileMenuOpen {
+    transform: translateX(0);
+}
+
+.mobileNav {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.mobileNavList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl, 32px);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobileNavLink {
+    font-size: var(--font-size-2xl, 24px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-secondary, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+    padding: 8px 0;
+}
+
+.mobileNavLink:hover {
+    color: var(--color-text, #f0f4ff);
+}
+
+.mobileNavAction {
+    margin-top: var(--spacing-2xl, 24px);
+}
+
+/* ============================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+   ============================================ */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    animation: fadeInDown 0.6s ease;
+}

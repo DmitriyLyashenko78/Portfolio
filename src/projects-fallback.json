@@ -1,0 +1,25 @@
+
+[
+  {
+    "id": 1,
+    "name": "project-1",
+    "description": "Описание проекта 1",
+    "html_url": "https://github.com/your-username/project-1",
+    "homepage": "https://project-1.vercel.app",
+    "topics": ["react", "typescript"],
+    "updated_at": "2024-01-01T00:00:00Z",
+    "stargazers_count": 5,
+    "language": "TypeScript"
+  },
+  {
+    "id": 2,
+    "name": "project-2",
+    "description": "Описание проекта 2",
+    "html_url": "https://github.com/your-username/project-2",
+    "homepage": null,
+    "topics": ["nextjs", "tailwind"],
+    "updated_at": "2024-01-01T00:00:00Z",
+    "stargazers_count": 3,
+    "language": "JavaScript"
+  }
+]

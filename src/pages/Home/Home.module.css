@@ -1,0 +1,38 @@
+/* src/pages/Home/Home.module.css */
+
+/* Секция с альтернативным фоном */
+.sectionAlt {
+    background: var(--color-bg-secondary, #111827);
+    border-top: 1px solid var(--color-border, #1e293b);
+}
+
+/* Секция с основным фоном */
+.sectionMain {
+    background: var(--color-bg, #0a0e1a);
+    border-top: 1px solid var(--color-border, #1e293b);
+}
+
+/* Заглушки для секций (временные) */
+.placeholder {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-6xl, 64px) var(--spacing-xl, 20px);
+}
+
+.placeholderContent {
+    text-align: center;
+}
+
+.placeholderContent h2 {
+    font-size: var(--font-size-3xl, 32px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    margin-bottom: var(--spacing-md, 16px);
+}
+
+.placeholderContent p {
+    font-size: var(--font-size-lg, 18px);
+    color: var(--color-text-secondary, #94a3b8);
+}

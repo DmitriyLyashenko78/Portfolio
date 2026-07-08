@@ -1,0 +1,84 @@
+/* src/styles/globals.css */
+@import './variables.css';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 1.2 Убираем стандартные отступы у body */
+body {
+    min-height: 100vh;
+    background: var(--color-bg, #0a0e1a); /* ← основной фон всего сайта */
+    color: var(--color-text, #1a1a2e);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 1.3 Убираем стандартные стили у списков */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 1.4 Убираем подчёркивание у ссылок */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 1.5 Наследуем шрифт для форм */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* 1.6 Убираем стандартную кнопку у button */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* 1.7 Убираем рамку у изображений */
+img,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 1.8 Убираем стандартные стили у полей ввода */
+input,
+textarea {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* 1.9 Делаем скролл плавным */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 1.10 Убираем outline для фокуса (заменим на свой) */
+:focus-visible {
+    outline: 2px solid var(--color-accent, #6c63ff);
+    outline-offset: 2px;
+}
+
+.section-alt {
+    background: var(--color-bg-secondary, #111827);
+}
+
+/* Секция с основным фоном (по умолчанию) */
+.section-main {
+    background: var(--color-bg, #0a0e1a);
+}

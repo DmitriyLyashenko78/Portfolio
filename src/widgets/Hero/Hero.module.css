@@ -1,0 +1,441 @@
+/* src/widgets/Hero/Hero.module.css */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px 0 60px;
+}
+
+/* ============================================
+   ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ (свечение)
+   ============================================ */
+
+.glow {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.08) 0%,
+            transparent 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.glowSecondary {
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.05) 0%,
+            transparent 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ============================================
+   КОНТЕНТ
+   ============================================ */
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   СЕТКА (ФОТО + ТЕКСТ)
+   ============================================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-6xl, 64px);
+    align-items: center;
+}
+
+/* ============================================
+   ФОТО
+   ============================================ */
+
+.photoWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photoBorder {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(
+            135deg,
+            var(--color-accent, #3b82f6),
+            #60a5fa 30%,
+            transparent 50%,
+            #60a5fa 70%,
+            var(--color-accent, #3b82f6)
+    );
+    background-size: 300% 300%;
+    animation: borderRotate 6s linear infinite;
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
+}
+
+@keyframes borderRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--color-bg-secondary, #111827);
+    display: block;
+    border: 2px solid var(--color-bg, #0a0e1a);
+}
+
+/* Декоративные кольца вокруг фото — УСИЛЕННЫЕ */
+.photoRing {
+    position: absolute;
+    top: -24px;
+    left: -24px;
+    right: -24px;
+    bottom: -24px;
+    border-radius: 50%;
+    border: 2px solid rgba(59, 130, 246, 0.25);
+    animation: ringPulse 4s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.05);
+}
+
+.photoRingSecondary {
+    position: absolute;
+    top: -48px;
+    left: -48px;
+    right: -48px;
+    bottom: -48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(59, 130, 246, 0.12);
+    animation: ringPulse 4s ease-in-out infinite 1.5s;
+}
+
+@keyframes ringPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   ТЕКСТОВАЯ ЧАСТЬ
+   ============================================ */
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 16px);
+}
+
+/* ============================================
+   ПРИВЕТСТВИЕ
+   ============================================ */
+
+.greetingText {
+    font-size: var(--font-size-lg, 18px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-secondary, #94a3b8);
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ИМЯ
+   ============================================ */
+
+.name {
+    font-size: var(--font-size-5xl, 48px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.nameHighlight {
+    color: var(--color-accent, #3b82f6);
+}
+
+/* ============================================
+   СПЕЦИАЛИЗАЦИЯ
+   ============================================ */
+
+.role {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 16px);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xs, 4px);
+}
+
+.roleText {
+    font-size: var(--font-size-xl, 20px);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-text-secondary, #94a3b8);
+}
+
+.roleBadge {
+    font-size: var(--font-size-sm, 14px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-accent, #3b82f6);
+    background: var(--color-accent-light, #1e3a5f);
+    padding: 4px 14px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* ============================================
+   ОПИСАНИЕ
+   ============================================ */
+
+.description {
+    font-size: var(--font-size-lg, 18px);
+    line-height: 1.7;
+    color: var(--color-text-secondary, #94a3b8);
+    margin: var(--spacing-sm, 8px) 0;
+}
+
+/* ============================================
+   КНОПКИ
+   ============================================ */
+
+.actions {
+    display: flex;
+    gap: var(--spacing-md, 16px);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-sm, 8px);
+}
+
+/* ============================================
+   СТАТИСТИКА
+   ============================================ */
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xl, 24px);
+    margin-top: var(--spacing-3xl, 32px);
+    padding-top: var(--spacing-2xl, 24px);
+    border-top: 1px solid var(--color-border, #1e293b);
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statNumber {
+    font-size: var(--font-size-2xl, 24px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+}
+
+.statLabel {
+    font-size: var(--font-size-sm, 14px);
+    color: var(--color-text-tertiary, #64748b);
+    margin-top: var(--spacing-xs, 4px);
+}
+
+.statDivider {
+    width: 1px;
+    height: 32px;
+    background: var(--color-border, #1e293b);
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .grid {
+        gap: var(--spacing-4xl, 40px);
+    }
+
+    .photoBorder {
+        width: 260px;
+        height: 260px;
+    }
+
+    .photoRing {
+        top: -18px;
+        left: -18px;
+        right: -18px;
+        bottom: -18px;
+    }
+
+    .photoRingSecondary {
+        top: -36px;
+        left: -36px;
+        right: -36px;
+        bottom: -36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        padding: 100px 0 40px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-3xl, 32px);
+        text-align: center;
+    }
+
+    .photoWrapper {
+        order: -1;
+    }
+
+    .photoBorder {
+        width: 200px;
+        height: 200px;
+    }
+
+    .photoRing {
+        top: -14px;
+        left: -14px;
+        right: -14px;
+        bottom: -14px;
+    }
+
+    .photoRingSecondary {
+        top: -28px;
+        left: -28px;
+        right: -28px;
+        bottom: -28px;
+    }
+
+    .textWrapper {
+        align-items: center;
+    }
+
+    .name {
+        font-size: var(--font-size-4xl, 40px);
+    }
+
+    .role {
+        justify-content: center;
+    }
+
+    .description {
+        font-size: var(--font-size-md, 16px);
+        max-width: 100%;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    .stats {
+        justify-content: center;
+        gap: var(--spacing-xl, 20px);
+    }
+
+    .glow {
+        width: 400px;
+        height: 400px;
+        top: -100px;
+        right: -100px;
+    }
+
+    .glowSecondary {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .photoBorder {
+        width: 160px;
+        height: 160px;
+    }
+
+    .photoRing {
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .photoRingSecondary {
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+    }
+
+    .name {
+        font-size: var(--font-size-3xl, 32px);
+    }
+
+    .roleText {
+        font-size: var(--font-size-lg, 18px);
+    }
+
+    .roleBadge {
+        font-size: var(--font-size-xs, 12px);
+        padding: 3px 10px;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-sm, 8px);
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: var(--spacing-md, 16px);
+        width: 100%;
+    }
+
+    .statDivider {
+        display: none;
+    }
+
+    .statItem {
+        flex-direction: row;
+        gap: var(--spacing-sm, 8px);
+    }
+
+    .statLabel {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,41 @@
+/* src/shared/ui/Container/Container.module.css */
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 20px);
+}
+
+/* Размеры контейнера */
+.sm {
+    max-width: 640px;
+}
+
+.md {
+    max-width: 768px;
+}
+
+.lg {
+    max-width: 1024px;
+}
+
+.xl {
+    max-width: 1200px; /* Основной размер, как в переменных */
+}
+
+.full {
+    max-width: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+}

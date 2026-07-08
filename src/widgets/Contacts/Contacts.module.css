@@ -1,0 +1,185 @@
+/* src/widgets/Contacts/Contacts.module.css */
+
+.section {
+    padding: var(--spacing-7xl, 80px) 0;
+    background: var(--color-bg-secondary, #111827);
+    border-top: 1px solid var(--color-border, #1e293b);
+}
+
+/* ============================================
+   ЗАГОЛОВОК
+   ============================================ */
+
+.header {
+    margin-bottom: var(--spacing-6xl, 64px);
+}
+
+.title {
+    font-size: var(--font-size-4xl, 40px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text, #f0f4ff);
+    margin: 0;
+}
+
+.titleHighlight {
+    color: var(--color-accent, #3b82f6);
+}
+
+/* ============================================
+   СЕТКА КОНТАКТОВ
+   ============================================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg, 16px);
+}
+
+/* ============================================
+   КАРТОЧКА КОНТАКТА
+   ============================================ */
+
+.contactCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm, 8px);
+    padding: var(--spacing-2xl, 24px) var(--spacing-md, 12px);
+    background: var(--color-bg, #0a0e1a);
+    border-radius: var(--radius-lg, 12px);
+    border: 1px solid var(--color-border, #1e293b);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 140px;
+}
+
+.contactCard:hover {
+    border-color: var(--color-accent, #3b82f6);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+.contactIcon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.contactCard:hover .contactIcon {
+    transform: scale(1.1);
+}
+
+.contactName {
+    font-size: var(--font-size-md, 16px);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-text, #f0f4ff);
+    text-align: center;
+}
+
+.contactLabel {
+    font-size: var(--font-size-sm, 14px);
+    color: var(--color-text-secondary, #94a3b8);
+    text-align: center;
+    word-break: break-all;
+}
+
+.contactCard:hover .contactLabel {
+    color: var(--color-accent, #3b82f6);
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+/* Планшеты — 2 колонки */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md, 12px);
+    }
+
+    .contactCard {
+        min-height: 120px;
+        padding: var(--spacing-lg, 16px) var(--spacing-md, 12px);
+    }
+
+    .contactIcon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Мобилки — 1 колонка */
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-6xl, 64px) 0;
+    }
+
+    .header {
+        margin-bottom: var(--spacing-4xl, 40px);
+    }
+
+    .title {
+        font-size: var(--font-size-3xl, 32px);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm, 8px);
+    }
+
+    .contactCard {
+        min-height: 80px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: var(--spacing-lg, 16px);
+        padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+    }
+
+    .contactIcon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .contactName {
+        font-size: var(--font-size-md, 16px);
+        text-align: left;
+    }
+
+    .contactLabel {
+        font-size: var(--font-size-sm, 14px);
+        text-align: left;
+        flex: 1;
+    }
+
+    .contactCard:hover {
+        transform: translateX(4px) !important;
+        scale: 1 !important;
+    }
+}
+
+/* Маленькие мобилки */
+@media (max-width: 480px) {
+    .contactCard {
+        min-height: 70px;
+        padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+        gap: var(--spacing-md, 12px);
+    }
+
+    .contactIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .contactName {
+        font-size: var(--font-size-sm, 14px);
+    }
+
+    .contactLabel {
+        font-size: var(--font-size-xs, 12px);
+    }
+}
