@@ -1,45 +1,11 @@
 // src/widgets/Contacts/Contacts.tsx
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Container } from '@/shared/ui/Container/Container';
 import { contacts } from '@/shared/lib/contactsData';
+import { fadeInUp, contactsContainerVariants, contactsItemVariants } from '@/shared/lib/animations';
 import styles from './Contacts.module.css';
 
 export function Contacts() {
-    // Анимация для заголовка
-    const headerVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: 'easeOut' },
-        },
-    };
-
-    // Анимация для элементов (stagger)
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2,
-            },
-        },
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 20, scale: 0.9 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.4,
-                ease: 'easeOut',
-            },
-        },
-    };
-
     return (
         <section className={styles.section} id="contacts">
             <Container size="xl">
@@ -49,11 +15,9 @@ export function Contacts() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    variants={headerVariants}
+                    variants={fadeInUp}
                 >
-                    <h2 className={styles.title}>
-                        Контакты
-                    </h2>
+                    <h2 className={styles.title}>Контакты</h2>
                 </motion.div>
 
                 {/* Контакты */}
@@ -62,7 +26,7 @@ export function Contacts() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
-                    variants={containerVariants}
+                    variants={contactsContainerVariants}
                 >
                     {contacts.map((contact) => (
                         <motion.a
@@ -71,7 +35,7 @@ export function Contacts() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.contactCard}
-                            variants={itemVariants}
+                            variants={contactsItemVariants}
                             whileHover={{
                                 y: -6,
                                 scale: 1.05,

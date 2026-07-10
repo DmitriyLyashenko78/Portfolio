@@ -24,3 +24,12 @@ export const skills: Skill[] = [
     { name: 'ESLint', icon: '/img/skills/eslint.svg', category: 'tools' },
     { name: 'Prettier', icon: '/img/skills/prettier.svg', category: 'tools' },
 ];
+
+// Категории и их отображение
+export const categoryConfig = {
+    frontend: { label: 'Frontend' },
+    tools: { label: 'Инструменты' },
+    other: { label: 'Другое' },
+} as const;
+
+export type CategoryKey = keyof typeof categoryConfig;

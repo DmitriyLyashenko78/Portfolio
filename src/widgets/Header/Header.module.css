@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100; /* ← понизили с 1000 до 100 */
+    z-index: 100;
     padding: 16px 0;
     transition: all 0.3s ease;
     background: var(--color-bg, #0a0e1a);
@@ -81,58 +81,11 @@
 }
 
 /* ============================================
-   НАВИГАЦИЯ (ДЕСКТОП)
+   НАВИГАЦИЯ (контейнер для десктопа)
    ============================================ */
 
 .nav {
     display: none;
-}
-
-.navList {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3xl, 32px);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navLink {
-    font-size: var(--font-size-md, 16px);
-    font-weight: var(--font-weight-medium, 500);
-    color: var(--color-text-secondary, #94a3b8);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    position: relative;
-    padding: 4px 0;
-}
-
-.navLink::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-accent, #3b82f6);
-    transition: width 0.3s ease;
-}
-
-.navLink:hover {
-    color: var(--color-text, #f0f4ff);
-}
-
-.navLink:hover::after {
-    width: 100%;
-}
-
-/* Активная ссылка (можно добавить позже) */
-.navLink.active {
-    color: var(--color-text, #f0f4ff);
-}
-
-.navLink.active::after {
-    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -171,7 +124,7 @@
     transition: all 0.3s ease;
     flex-shrink: 0;
     position: relative;
-    z-index: 1001; /* ← бургер выше меню и хедера */
+    z-index: 1001;
 }
 
 .burgerLine {
@@ -184,7 +137,6 @@
     transform-origin: center;
 }
 
-/* Анимация бургера при открытии */
 .burgerLineOpen1 {
     transform: rotate(45deg) translate(5px, 6px);
 }
@@ -202,10 +154,6 @@
         display: none;
     }
 }
-
-/* ============================================
-   МОБИЛЬНОЕ МЕНЮ (OVERLAY)
-   ============================================ */
 
 /* ============================================
    МОБИЛЬНОЕ МЕНЮ (OVERLAY)
@@ -242,29 +190,6 @@
     max-width: 400px;
     text-align: center;
     padding: 10px 0;
-}
-
-.mobileNavList {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-3xl, 32px);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobileNavLink {
-    font-size: var(--font-size-2xl, 24px);
-    font-weight: var(--font-weight-medium, 500);
-    color: var(--color-text-secondary, #94a3b8);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    display: inline-block;
-    padding: 8px 0;
-}
-
-.mobileNavLink:hover {
-    color: var(--color-text, #f0f4ff);
 }
 
 .mobileNavAction {

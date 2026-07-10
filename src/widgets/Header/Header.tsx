@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Container } from '@/shared/ui/Container/Container';
 import { Button } from '@/shared/ui/Button/Button';
+import { NavLinks } from './components/NavLinks'; // ← импортируем новый компонент
 import styles from './Header.module.css';
 
 interface NavItem {
@@ -29,6 +30,18 @@ export function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Блокируем скролл страницы при открытом меню (п.2)
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
     // Закрываем мобильное меню при клике на ссылку
     const handleNavClick = () => {
         setIsMobileMenuOpen(false);
@@ -43,27 +56,16 @@ export function Header() {
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
             <Container size="xl">
                 <div className={styles.inner}>
-                    {/* Логотип */}
                     <a href="#" className={styles.logo}>
                         <span className={styles.logoName}>[</span>
                         <span className={styles.logoLetters}>DL</span>
                         <span className={styles.logoName}>]</span>
                     </a>
 
-                    {/* Десктопная навигация */}
                     <nav className={styles.nav}>
-                        <ul className={styles.navList}>
-                            {navItems.map((item) => (
-                                <li key={item.href}>
-                                    <a href={item.href} className={styles.navLink}>
-                                        {item.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <NavLinks items={navItems} onClick={() => {}} isMobile={false} />
                     </nav>
 
-                    {/* Кнопка "Резюме" (десктоп) */}
                     <div className={styles.actions}>
                         <Button
                             variant="outline"
@@ -76,7 +78,6 @@ export function Header() {
                         </Button>
                     </div>
 
-                    {/* Кнопка бургер-меню (мобилка) */}
                     <button
                         className={styles.burger}
                         onClick={toggleMobileMenu}
@@ -88,37 +89,26 @@ export function Header() {
                     </button>
                 </div>
 
-                {/* Мобильное меню (overlay) */}
+                {/* Мобильное меню  */}
                 <div
                     className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}
                 >
-                    <nav className={styles.mobileNav}>
-                        <ul className={styles.mobileNavList}>
-                            {navItems.map((item) => (
-                                <li key={item.href}>
-                                    <a
-                                        href={item.href}
-                                        className={styles.mobileNavLink}
-                                        onClick={handleNavClick}
-                                    >
-                                        {item.label}
-                                    </a>
-                                </li>
-                            ))}
-                            <li className={styles.mobileNavAction}>
-                                <Button
-                                    variant="primary"
-                                    size="lg"
-                                    fullWidth
-                                    as="a"
-                                    href="/cv.pdf"
-                                    target="_blank"
-                                >
-                                    Резюме
-                                </Button>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div className={styles.mobileNav}>
+                        <NavLinks items={navItems} onClick={handleNavClick} isMobile={true} />
+                        <div className={styles.mobileNavAction}>
+                            <Button
+                                variant="primary"
+                                size="lg"
+                                fullWidth
+                                as="a"
+                                href="/cv.pdf"
+                                target="_blank"
+                                onClick={handleNavClick}
+                            >
+                                Резюме
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </Container>
         </header>

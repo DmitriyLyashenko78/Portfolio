@@ -20,8 +20,6 @@ if (!GITHUB_USERNAME) {
 
 async function fetchProjects() {
     try {
-        console.log(`🔄 Загрузка проектов для пользователя: ${GITHUB_USERNAME}...`);
-
         const response = await fetch(
             `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`,
             {
@@ -56,7 +54,6 @@ async function fetchProjects() {
         const outputPath = path.resolve(__dirname, '../public/projects.json');
         fs.writeFileSync(outputPath, JSON.stringify(portfolioProjects, null, 2));
 
-        console.log(`✅ Успешно загружено ${portfolioProjects.length} проектов`);
     } catch (error) {
         console.error('❌ Ошибка загрузки проектов:', error);
 
@@ -66,7 +63,6 @@ async function fetchProjects() {
 
         if (fs.existsSync(fallbackPath)) {
             fs.copyFileSync(fallbackPath, outputPath);
-            console.log('⚠️ Использован fallback-файл с проектами');
         } else {
             console.error('❌ Нет даже fallback-файла!');
             process.exit(1);

@@ -1,37 +1,15 @@
 // src/widgets/Hero/Hero.tsx
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Container } from '@/shared/ui/Container/Container';
 import { Button } from '@/shared/ui/Button/Button';
+import {
+    heroTextVariants,
+    heroPhotoVariants,
+    heroButtonVariants,
+} from '@/shared/lib/animations';
 import styles from './Hero.module.css';
 
 export function Hero() {
-    // Анимация для текста (появление снизу)
-    const textVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0 },
-    };
-
-    // Анимация для фото (появление с вращением и масштабом)
-    const photoVariants: Variants = {
-        hidden: { opacity: 0, scale: 0.8, rotate: -5 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            transition: {
-                duration: 0.8,
-                delay: 0.2,
-                ease: 'easeOut'
-            }
-        },
-    };
-
-    // Анимация для кнопок (появление с задержкой)
-    const buttonVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-    };
-
     return (
         <section className={styles.hero} id="hero">
             {/* Декоративный фон (световое пятно) */}
@@ -47,7 +25,7 @@ export function Hero() {
                             className={styles.photoWrapper}
                             initial="hidden"
                             animate="visible"
-                            variants={photoVariants}
+                            variants={heroPhotoVariants}
                         >
                             <div className={styles.photoBorder}>
                                 <img
@@ -70,7 +48,7 @@ export function Hero() {
                                 className={styles.greeting}
                                 initial="hidden"
                                 animate="visible"
-                                variants={textVariants}
+                                variants={heroTextVariants}
                                 transition={{ duration: 0.6 }}
                             >
                                 <span className={styles.greetingText}>Привет, я</span>
@@ -81,7 +59,7 @@ export function Hero() {
                                 className={styles.name}
                                 initial="hidden"
                                 animate="visible"
-                                variants={textVariants}
+                                variants={heroTextVariants}
                                 transition={{ duration: 0.6, delay: 0.1 }}
                             >
                                 Ляшенко Дмитрий
@@ -92,7 +70,7 @@ export function Hero() {
                                 className={styles.description}
                                 initial="hidden"
                                 animate="visible"
-                                variants={textVariants}
+                                variants={heroTextVariants}
                                 transition={{ duration: 0.6, delay: 0.3 }}
                             >
                                 Front-end разработчик с опытом коммерческой и командной разработки на стеке React / TypeScript / Next.js. Владею инструментами управления стейтом (RTK, TanStack Query) и реализации полного цикла авторизации и CRUD-операций. Уверенно настраиваю управление состоянием и запросами через Redux Toolkit и TanStack Query. Занимаюсь интеграцией API, версткой интерфейсов, валидацией форм и написанием Unit-тестов (Jest). Открыт к новым задачам, ценю чистый код и понятную логику интерфейса.
@@ -103,7 +81,7 @@ export function Hero() {
                                 className={styles.actions}
                                 initial="hidden"
                                 animate="visible"
-                                variants={buttonVariants}
+                                variants={heroButtonVariants}
                                 transition={{ duration: 0.6, delay: 0.4 }}
                             >
                                 <Button

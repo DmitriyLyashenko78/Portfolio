@@ -1,8 +1,9 @@
 // src/widgets/ProjectGrid/ProjectGrid.tsx
 import { useEffect, useState } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Container } from '@/shared/ui/Container/Container';
 import { ProjectCard } from './components/ProjectCard/ProjectCard';
+import { fadeInUp } from '@/shared/lib/animations'; // ← импортируем
 import type { Project } from '@/types/project';
 import styles from './ProjectGrid.module.css';
 
@@ -10,7 +11,6 @@ export function ProjectGrid() {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
 
     useEffect(() => {
         async function fetchProjects() {
@@ -31,15 +31,6 @@ export function ProjectGrid() {
 
         fetchProjects();
     }, []);
-
-    const headerVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: 'easeOut' },
-        },
-    };
 
     if (loading) {
         return (
@@ -92,15 +83,12 @@ export function ProjectGrid() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    variants={headerVariants}
+                    variants={fadeInUp} // ← используем импортированную анимацию
                 >
-                    <h2 className={styles.title}>
-                        Мои проекты
-                    </h2>
+                    <h2 className={styles.title}>Мои проекты</h2>
                     <p className={styles.subtitle}>
                         Пет-проекты, над которыми я работал
                     </p>
-                    {/* ← Убрали titleLine */}
                 </motion.div>
 
                 <div className={styles.grid}>
