@@ -1,25 +1,55 @@
 
 [
   {
-    "id": 1,
-    "name": "project-1",
-    "description": "Описание проекта 1",
-    "html_url": "https://github.com/your-username/project-1",
-    "homepage": "https://project-1.vercel.app",
-    "topics": ["react", "typescript"],
-    "updated_at": "2024-01-01T00:00:00Z",
-    "stargazers_count": 5,
+    "id": 1271057840,
+    "name": "Fridgewise",
+    "description": "Кулинарный пет-проект который подбирает рецепты по выбранным продуктам, фильтрам диет и калорийности продуктов",
+    "html_url": "https://github.com/DmitriyLyashenko78/Fridgewise",
+    "homepage": "https://fridgewise-psi.vercel.app",
+    "topics": [
+      "portfolio"
+    ],
+    "updated_at": "2026-07-07T14:26:38Z",
+    "stargazers_count": 0,
     "language": "TypeScript"
   },
   {
-    "id": 2,
-    "name": "project-2",
-    "description": "Описание проекта 2",
-    "html_url": "https://github.com/your-username/project-2",
-    "homepage": null,
-    "topics": ["nextjs", "tailwind"],
-    "updated_at": "2024-01-01T00:00:00Z",
-    "stargazers_count": 3,
-    "language": "JavaScript"
+    "id": 1256958844,
+    "name": "Personal-dashboard",
+    "description": " Пет-проект адаптивной персональной панели",
+    "html_url": "https://github.com/DmitriyLyashenko78/Personal-dashboard",
+    "homepage": "https://personal-dashboard-three-ashy.vercel.app/",
+    "topics": [
+      "portfolio"
+    ],
+    "updated_at": "2026-07-07T14:26:04Z",
+    "stargazers_count": 0,
+    "language": "TypeScript"
+  },
+  {
+    "id": 1151213559,
+    "name": "Kinopoisk",
+    "description": "Приложение для поиска информации о фильмах с возможностью фильтрации по различным параметрам (сейчас только под VPN)",
+    "html_url": "https://github.com/DmitriyLyashenko78/Kinopoisk",
+    "homepage": "https://kinopoisk-dusky.vercel.app",
+    "topics": [
+      "portfolio"
+    ],
+    "updated_at": "2026-07-07T14:25:09Z",
+    "stargazers_count": 0,
+    "language": "TypeScript"
+  },
+  {
+    "id": 1140410897,
+    "name": "Todolist",
+    "description": "Приложение для создания списков задач, отметки о их выполнении и фильтрации",
+    "html_url": "https://github.com/DmitriyLyashenko78/Todolist",
+    "homepage": "https://dmitriylyashenko78.github.io/todolist-20/",
+    "topics": [
+      "portfolio"
+    ],
+    "updated_at": "2026-07-07T14:23:54Z",
+    "stargazers_count": 0,
+    "language": "TypeScript"
   }
 ]

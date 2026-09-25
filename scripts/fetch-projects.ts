@@ -8,13 +8,19 @@ import 'dotenv/config';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
+const DEFAULT_GITHUB_USERNAME = 'DmitriyLyashenko78';
+const GITHUB_USERNAME = process.env.GITHUB_USERNAME || DEFAULT_GITHUB_USERNAME;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const fallbackPath = path.resolve(__dirname, '../src/projects-fallback.json');
+const outputPath = path.resolve(__dirname, '../public/projects.json');
 
-// Проверяем, что логин задан
-if (!GITHUB_USERNAME) {
-    console.error('❌ Ошибка: GITHUB_USERNAME не указан в .env');
-    console.log('💡 Создай файл .env в корне проекта и добавь: GITHUB_USERNAME=твой_логин');
+function writeFallbackProjects() {
+    if (fs.existsSync(fallbackPath)) {
+        fs.copyFileSync(fallbackPath, outputPath);
+        return;
+    }
+
+    console.error('❌ Нет fallback-файла с проектами!');
     process.exit(1);
 }
 
@@ -50,23 +56,13 @@ async function fetchProjects() {
                 language: repo.language,
             }));
 
-        // Сохраняем в public/
-        const outputPath = path.resolve(__dirname, '../public/projects.json');
         fs.writeFileSync(outputPath, JSON.stringify(portfolioProjects, null, 2));
 
     } catch (error) {
         console.error('❌ Ошибка загрузки проектов:', error);
 
-        // Fallback: копируем локальный JSON
-        const fallbackPath = path.resolve(__dirname, '../src/projects-fallback.json');
-        const outputPath = path.resolve(__dirname, '../public/projects.json');
-
-        if (fs.existsSync(fallbackPath)) {
-            fs.copyFileSync(fallbackPath, outputPath);
-        } else {
-            console.error('❌ Нет даже fallback-файла!');
-            process.exit(1);
-        }
+        // Fallback: копируем локальный JSON с реальными проектами
+        writeFallbackProjects();
     }
 }
 

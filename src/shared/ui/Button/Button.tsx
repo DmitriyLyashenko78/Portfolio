@@ -1,17 +1,31 @@
 // src/shared/ui/Button/Button.tsx
-import { type ReactNode, type ButtonHTMLAttributes } from 'react';
+import {
+    type ReactNode,
+    type AnchorHTMLAttributes,
+    type ButtonHTMLAttributes,
+} from 'react';
 import styles from './Button.module.css';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonBaseProps {
     children: ReactNode;
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
     size?: 'sm' | 'md' | 'lg';
     fullWidth?: boolean;
-    as?: 'button' | 'a';
-    href?: string;
-    target?: string;
     className?: string;
 }
+
+type ButtonAsButtonProps = ButtonBaseProps &
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'className'> & {
+        as?: 'button';
+    };
+
+type ButtonAsAnchorProps = ButtonBaseProps &
+    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'className' | 'href'> & {
+        as: 'a';
+        href: string;
+    };
+
+type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 
 export function Button({
                            children,
@@ -42,13 +56,17 @@ export function Button({
     const baseClass = `${styles.button} ${variantClass} ${sizeClass} ${widthClass} ${className}`;
 
     // Если это ссылка
-    if (Tag === 'a' && href) {
+    if (Tag === 'a') {
+        const { rel, ...anchorProps } = props as Omit<ButtonAsAnchorProps, keyof ButtonBaseProps | 'as' | 'href'>;
+        const safeRel = target === '_blank' ? rel ?? 'noopener noreferrer' : rel;
+
         return (
             <a
                 href={href}
                 target={target}
+                rel={safeRel}
                 className={baseClass}
-                {...(props as any)}
+                {...anchorProps}
             >
                 {children}
             </a>
@@ -57,7 +75,7 @@ export function Button({
 
     // Если это кнопка
     return (
-        <button className={baseClass} {...props}>
+        <button className={baseClass} {...(props as ButtonAsButtonProps)}>
             {children}
         </button>
     );

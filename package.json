@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "tsx scripts/fetch-projects.ts",
+    "prebuild": "node scripts/fetch-projects.ts",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "deploy": "vercel --prod"
