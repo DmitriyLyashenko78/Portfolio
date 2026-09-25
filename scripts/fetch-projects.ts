@@ -14,6 +14,25 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const fallbackPath = path.resolve(__dirname, '../src/projects-fallback.json');
 const outputPath = path.resolve(__dirname, '../public/projects.json');
 
+function readFallbackProjects() {
+    if (!fs.existsSync(fallbackPath)) {
+        return [];
+    }
+
+    return JSON.parse(fs.readFileSync(fallbackPath, 'utf-8'));
+}
+
+function createFallbackProjectMap() {
+    const fallbackProjects = readFallbackProjects();
+
+    return new Map(
+        fallbackProjects.flatMap((project: any) => [
+            [String(project.id), project],
+            [project.html_url?.toLowerCase(), project],
+        ])
+    );
+}
+
 function writeFallbackProjects() {
     if (fs.existsSync(fallbackPath)) {
         fs.copyFileSync(fallbackPath, outputPath);
@@ -40,21 +59,30 @@ async function fetchProjects() {
         }
 
         const repos = await response.json();
+        const fallbackProjectsMap = createFallbackProjectMap();
 
         // Фильтруем по топику 'portfolio'
         const portfolioProjects = repos
             .filter((repo: any) => repo.topics?.includes('portfolio'))
-            .map((repo: any) => ({
-                id: repo.id,
-                name: repo.name,
-                description: repo.description,
-                html_url: repo.html_url,
-                homepage: repo.homepage,
-                topics: repo.topics || [],
-                updated_at: repo.updated_at,
-                stargazers_count: repo.stargazers_count,
-                language: repo.language,
-            }));
+            .map((repo: any) => {
+                const fallbackProject =
+                    fallbackProjectsMap.get(String(repo.id)) ||
+                    fallbackProjectsMap.get(repo.html_url?.toLowerCase()) ||
+                    {};
+
+                return {
+                    id: repo.id,
+                    name: repo.name,
+                    description: repo.description,
+                    html_url: repo.html_url,
+                    homepage: repo.homepage,
+                    topics: repo.topics || [],
+                    updated_at: repo.updated_at,
+                    stargazers_count: repo.stargazers_count,
+                    language: repo.language,
+                    ...fallbackProject,
+                };
+            });
 
         fs.writeFileSync(outputPath, JSON.stringify(portfolioProjects, null, 2));
 
