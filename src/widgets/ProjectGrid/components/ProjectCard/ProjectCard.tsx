@@ -43,6 +43,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.description || 'Описание отсутствует'}
             </p>
 
+            {project.role && (
+                <p className={styles.role}>{project.role}</p>
+            )}
+
+            {project.highlights && project.highlights.length > 0 && (
+                <ul className={styles.highlights}>
+                    {project.highlights.slice(0, 3).map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                    ))}
+                </ul>
+            )}
+
             {/* Технологии (топики) — без portfolio */}
             {displayTopics.length > 0 && (
                 <div className={styles.topics}>

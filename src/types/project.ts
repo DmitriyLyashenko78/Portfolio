@@ -3,6 +3,8 @@ export interface Project {
     id: number;
     name: string;
     description: string | null;
+    role?: string;
+    highlights?: string[];
     html_url: string;
     homepage: string | null;
     topics: string[];

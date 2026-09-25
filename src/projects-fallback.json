@@ -3,11 +3,21 @@
   {
     "id": 1271057840,
     "name": "Fridgewise",
-    "description": "Кулинарный пет-проект который подбирает рецепты по выбранным продуктам, фильтрам диет и калорийности продуктов",
+    "description": "Next.js-приложение, которое подбирает рецепты по продуктам из “кладовой” и ограничениям пользователя.",
+    "role": "Фокус: поиск рецептов, фильтрация и работа с Edamam API",
+    "highlights": [
+      "Собрал сценарий выбора продуктов по категориям и быстрым диет-фильтрам",
+      "Интегрировал RTK Query с трансформацией ответа Edamam API",
+      "Добавил избранное, страницу рецепта и сравнение ингредиентов с выбранной кладовой"
+    ],
     "html_url": "https://github.com/DmitriyLyashenko78/Fridgewise",
     "homepage": "https://fridgewise-psi.vercel.app",
     "topics": [
-      "portfolio"
+      "portfolio",
+      "nextjs",
+      "rtk-query",
+      "edamam-api",
+      "localstorage"
     ],
     "updated_at": "2026-07-07T14:26:38Z",
     "stargazers_count": 0,
@@ -16,11 +26,21 @@
   {
     "id": 1256958844,
     "name": "Personal-dashboard",
-    "description": " Пет-проект адаптивной персональной панели",
+    "description": "Next.js dashboard с виджетами погоды, новостей, валют, почты, календаря и быстрых ссылок.",
+    "role": "Фокус: агрегатор данных, API routes и клиентское состояние",
+    "highlights": [
+      "Собрал независимые виджеты с загрузкой, ошибками и skeleton-состояниями",
+      "Настроил Next API routes для внешних сервисов с серверным кэшированием",
+      "Реализовал календарь и закладки с CRUD и сохранением через Zustand persist"
+    ],
     "html_url": "https://github.com/DmitriyLyashenko78/Personal-dashboard",
     "homepage": "https://personal-dashboard-three-ashy.vercel.app/",
     "topics": [
-      "portfolio"
+      "portfolio",
+      "nextjs",
+      "tanstack-query",
+      "zustand",
+      "api-routes"
     ],
     "updated_at": "2026-07-07T14:26:04Z",
     "stargazers_count": 0,
@@ -29,11 +49,21 @@
   {
     "id": 1151213559,
     "name": "Kinopoisk",
-    "description": "Приложение для поиска информации о фильмах с возможностью фильтрации по различным параметрам (сейчас только под VPN)",
+    "description": "SPA-каталог фильмов с поиском, подборками, фильтрами, избранным и страницей деталей.",
+    "role": "Фокус: RTK Query, валидация API-ответов и сложная фильтрация",
+    "highlights": [
+      "Настроил единый API-слой для TMDB с обработкой ошибок и Bearer-токеном",
+      "Добавил Zod-схемы для проверки ответов списков, деталей и актерского состава",
+      "Реализовал фильтры по жанрам, рейтингу, сортировке, поиск, пагинацию и избранное"
+    ],
     "html_url": "https://github.com/DmitriyLyashenko78/Kinopoisk",
     "homepage": "https://kinopoisk-dusky.vercel.app",
     "topics": [
-      "portfolio"
+      "portfolio",
+      "vite-spa",
+      "rtk-query",
+      "zod",
+      "movie-api"
     ],
     "updated_at": "2026-07-07T14:25:09Z",
     "stargazers_count": 0,
@@ -42,11 +72,21 @@
   {
     "id": 1140410897,
     "name": "Todolist",
-    "description": "Приложение для создания списков задач, отметки о их выполнении и фильтрации",
+    "description": "SPA для управления todolist-ами и задачами с авторизацией, защищенными роутами и серверным API.",
+    "role": "Фокус: RTK Query CRUD, auth flow и optimistic update",
+    "highlights": [
+      "Реализовал login/logout, проверку пользователя и protected routes",
+      "Настроил CRUD для todolist-ов и задач через RTK Query с тегами кэша",
+      "Добавил optimistic update, фильтры задач, пагинацию и формы с zod-валидацией"
+    ],
     "html_url": "https://github.com/DmitriyLyashenko78/Todolist",
     "homepage": "https://dmitriylyashenko78.github.io/todolist-20/",
     "topics": [
-      "portfolio"
+      "portfolio",
+      "vite-spa",
+      "rtk-query",
+      "auth-flow",
+      "optimistic-ui"
     ],
     "updated_at": "2026-07-07T14:23:54Z",
     "stargazers_count": 0,

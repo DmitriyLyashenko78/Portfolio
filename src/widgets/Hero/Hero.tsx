@@ -30,7 +30,7 @@ export function Hero() {
                             <div className={styles.photoBorder}>
                                 <img
                                     src="/img/aavatar.webp"
-                                    alt="Имя Фамилия — Frontend Developer"
+                                    alt="Дмитрий Ляшенко — Front-end Developer"
                                     className={styles.photo}
                                     loading="lazy"
                                 />
@@ -73,7 +73,7 @@ export function Hero() {
                                 variants={heroTextVariants}
                                 transition={{ duration: 0.6, delay: 0.3 }}
                             >
-                                Front-end разработчик с опытом коммерческой и командной разработки на стеке React / TypeScript / Next.js. Владею инструментами управления стейтом (RTK, TanStack Query) и реализации полного цикла авторизации и CRUD-операций. Уверенно настраиваю управление состоянием и запросами через Redux Toolkit и TanStack Query. Занимаюсь интеграцией API, версткой интерфейсов, валидацией форм и написанием Unit-тестов (Jest). Открыт к новым задачам, ценю чистый код и понятную логику интерфейса.
+                                Front-end разработчик с опытом коммерческой и командной разработки на React, TypeScript и Next.js. Разрабатываю SPA/SSR-интерфейсы, работаю с API, авторизацией, формами, CRUD, Redux Toolkit, RTK Query и TanStack Query. Активно использую AI-инструменты в разработке: для анализа задач, ускорения прототипирования, рефакторинга и поиска решений. Ценю чистую архитектуру, понятную логику интерфейса и внимательность к деталям.
                             </motion.p>
 
                             {/* Кнопки */}

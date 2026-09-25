@@ -27,7 +27,7 @@ export function Skills() {
                             {category.label}
                         </h3>
                         <motion.div
-                            className={styles.grid}
+                            className={`${styles.grid} ${styles[`grid_${category.key}`] || ''}`}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.1 }}
@@ -47,7 +47,7 @@ export function Skills() {
                                     <img
                                         src={skill.icon}
                                         alt={skill.name}
-                                        className={styles.skillIcon}
+                                        className={`${styles.skillIcon} ${styles[`skillIcon_${skill.name.toLowerCase().replace(/\W+/g, '')}`] || ''}`}
                                         loading="lazy"
                                     />
                                     <span className={styles.skillName}>

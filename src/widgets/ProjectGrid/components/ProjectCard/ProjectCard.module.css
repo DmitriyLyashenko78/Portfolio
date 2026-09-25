@@ -28,12 +28,35 @@
     font-size: var(--font-size-sm, 14px);
     line-height: 1.6;
     color: var(--color-text-secondary, #94a3b8);
-    margin: 0 0 var(--spacing-lg, 16px) 0;
-    flex: 1;
+    margin: 0 0 var(--spacing-md, 12px) 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.role {
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: 1.5;
+    color: var(--color-accent, #3b82f6);
+    margin: 0 0 var(--spacing-md, 12px) 0;
+}
+
+.highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs, 4px);
+    margin: 0 0 var(--spacing-lg, 16px) 0;
+    padding-left: 18px;
+    color: var(--color-text-secondary, #94a3b8);
+    font-size: var(--font-size-sm, 14px);
+    line-height: 1.45;
+    flex: 1;
+}
+
+.highlights li::marker {
+    color: var(--color-accent, #3b82f6);
 }
 
 .topics {
@@ -79,5 +102,10 @@
     .description {
         font-size: var(--font-size-xs, 12px);
         -webkit-line-clamp: 2;
+    }
+
+    .role,
+    .highlights {
+        font-size: var(--font-size-xs, 12px);
     }
 }

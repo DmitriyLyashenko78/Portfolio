@@ -2,7 +2,7 @@
 export interface Skill {
     name: string;
     icon: string;
-    category?: 'frontend' | 'tools' | 'other';
+    category?: 'frontend' | 'tools' | 'ai' | 'other';
 }
 
 export const skills: Skill[] = [
@@ -23,12 +23,20 @@ export const skills: Skill[] = [
     { name: 'Photoshop', icon: '/img/skills/photoshop.svg', category: 'tools' },
     { name: 'ESLint', icon: '/img/skills/eslint.svg', category: 'tools' },
     { name: 'Prettier', icon: '/img/skills/prettier.svg', category: 'tools' },
+    { name: 'pnpm', icon: '/img/skills/pnpm.svg', category: 'tools' },
+    { name: 'Swagger', icon: '/img/skills/swagger.svg', category: 'tools' },
+
+    { name: 'ChatGPT', icon: '/img/skills/chatgpt.svg', category: 'ai' },
+    { name: 'Codex', icon: '/img/skills/codex.svg', category: 'ai' },
+    { name: 'DeepSeek', icon: '/img/skills/deepseek.svg', category: 'ai' },
+    { name: 'Qwen Chat', icon: '/img/skills/qwen.svg', category: 'ai' },
 ];
 
 // Категории и их отображение
 export const categoryConfig = {
     frontend: { label: 'Frontend' },
     tools: { label: 'Инструменты' },
+    ai: { label: 'AI-инструменты' },
     other: { label: 'Другое' },
 } as const;
 

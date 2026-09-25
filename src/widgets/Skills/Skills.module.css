@@ -54,6 +54,24 @@
     gap: var(--spacing-lg, 16px);
 }
 
+.grid_tools {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid_tools .skillCard {
+    min-height: 110px;
+}
+
+.grid_tools .skillIcon {
+    width: 48px;
+    height: 48px;
+}
+
+.grid_tools .skillName {
+    font-size: var(--font-size-md, 16px);
+    margin-top: 18px;
+}
+
 /* ============================================
    КАРТОЧКА НАВЫКА
    ============================================ */
@@ -85,6 +103,11 @@
     transition: transform 0.3s ease;
 }
 
+.skillIcon_pnpm {
+    width: 58px;
+    height: 58px;
+}
+
 .skillCard:hover .skillIcon {
     transform: scale(1.1);
 }
@@ -109,7 +132,8 @@
 
 /* Планшеты — 3 колонки */
 @media (max-width: 1024px) {
-    .grid {
+    .grid,
+    .grid_tools {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-md, 12px);
     }
@@ -122,6 +146,11 @@
     .skillIcon {
         width: 40px;
         height: 40px;
+    }
+
+    .skillIcon_pnpm {
+        width: 48px;
+        height: 48px;
     }
 
     .skillName {
@@ -147,7 +176,8 @@
         font-size: var(--font-size-lg, 18px);
     }
 
-    .grid {
+    .grid,
+    .grid_tools {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-sm, 8px);
     }
@@ -162,6 +192,11 @@
         height: 32px;
     }
 
+    .skillIcon_pnpm {
+        width: 40px;
+        height: 40px;
+    }
+
     .skillName {
         font-size: var(--font-size-sm, 14px);
         margin-top: 4px;
@@ -170,7 +205,8 @@
 
 /* Маленькие мобилки — 2 колонки */
 @media (max-width: 480px) {
-    .grid {
+    .grid,
+    .grid_tools {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-xs, 6px);
     }
@@ -183,6 +219,11 @@
     .skillIcon {
         width: 28px;
         height: 28px;
+    }
+
+    .skillIcon_pnpm {
+        width: 36px;
+        height: 36px;
     }
 
     .skillName {
